@@ -2,7 +2,7 @@
 
 Proyek ini merupakan bagian dari mata kuliah Rekayasa Perangkat Lunak. Sistem ini dirancang untuk mendeteksi penyakit pada daun mangga menggunakan teknologi berbasis pembelajaran mesin dan visi komputer.
 
-## Tim Proyek Kelompok 7
+## Tim Proyek Kelompok 3
 - **Scrum Master**: Matius Dwi Septyan Natalis
 - **Programmer**: Riyan Daifullah
 - **Teknikal Writer**: Izmi Nabilah Isnaini, Firdaus Sanjaya
