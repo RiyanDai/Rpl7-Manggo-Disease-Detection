@@ -10,6 +10,7 @@ import 'dart:developer' as devtools;
 import 'package:my_tflit_app/models/detection_model.dart';
 
 import '../../widgets/wave_background.dart';
+import '../../screen/camera/camera_page.dart';
 
 
 
@@ -151,88 +152,98 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Center(
             child: Column(
               children: [
+                Text('Identifikasi', style: TextStyle(fontSize: 41, color: Colors.white),),
                 const SizedBox(
                   height: 12,
                 ),
                 Card(
                   elevation: 20,
                   clipBehavior: Clip.hardEdge,
-                  child: SizedBox(
-                    width: 300,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 18,
-                          ),
-                          Container(
-                            height: 280,
-                            width: 280,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                              image: const DecorationImage(
-                                image: AssetImage('assets/upload.jpg'),
+                  child: Column(
+                    children: [
+
+                      SizedBox(
+
+                      width: 300,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+
+                            const SizedBox(
+                              height: 18,
+                            ),
+                            Container(
+                              height: 280,
+                              width: 280,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/upload.jpg'),
+                                ),
+                              ),
+                              child: filePath == null
+                                  ? const Text('')
+                                  : Image.file(
+                                      filePath!,
+                                      fit: BoxFit.fill,
+                                    ),
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    label,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  Text(
+                                    "The Accuracy is ${confidence.toStringAsFixed(0)}%",
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                ],
                               ),
                             ),
-                            child: filePath == null
-                                ? const Text('')
-                                : Image.file(
-                                    filePath!,
-                                    fit: BoxFit.fill,
-                                  ),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  label,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 12,
-                                ),
-                                Text(
-                                  "The Accuracy is ${confidence.toStringAsFixed(0)}%",
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 12,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],),
                 ),
                 const SizedBox(
                   height: 38,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    pickImageCamera();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const CameraPage()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF4CAF50), // Green color
-                    minimumSize: const Size(250, 45), // Set fixed width and height
+                    backgroundColor: const Color(0xFF4CAF50),
+                    minimumSize: const Size(250, 45),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    elevation: 0, // No shadow
+                    elevation: 0,
                   ),
                   child: const Text(
-                    "Take Photo",
+                    "Real-time Detection",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
